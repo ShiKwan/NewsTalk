@@ -2,6 +2,7 @@ let express = require('express')
 let bodyParser = require('body-parser')
 let logger = require('morgan')
 let mongoose = require('mongoose')
+var path = require('path')
 
 var PORT = 3000
 
@@ -30,16 +31,24 @@ mongoose.connect(MONGODB_URI, {
   // useMongoClient: true
 })
 
-var data = []
+app.use(express.static('app/public'))
 
-scrape.axiosScrape(function (err, data) {
-  if (err) {
-    console.log(err)
-  }else {
-    // console.log(data)
-    console.log('done scraping')
-  }
+app.use(bodyParser.json())
+var exphbs = require('express-handlebars')
+
+var hbs = exphbs.create({
+    helpers: {
+        getDate: function (dateTime) { return moment(dateTime).format('YYYY-MM-DD') },
+        getTime: function (dateTime) { console.log(moment(dateTime).format('HH:mm')); return moment(dateTime).format('HH:mm') }
+    }, defaultLayout: 'main'
 })
+
+app.engine('handlebars', hbs.engine)
+app.set('view engine', 'handlebars')
+
+let fetch = require('./controllers/fetch')(app);
+//require('./controllers/api-event-routes.js')(app)
+
 
 // Start the server
 app.listen(PORT, function () {
