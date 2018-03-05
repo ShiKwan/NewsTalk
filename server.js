@@ -47,7 +47,8 @@ app.engine('handlebars', hbs.engine)
 app.set('view engine', 'handlebars')
 
 let fetch = require('./controllers/fetch')(app);
-//require('./controllers/api-event-routes.js')(app)
+let headline = require('./controllers/headline')(app);
+let note = require('./controllers/note')(app);
 
 
 // Start the server
