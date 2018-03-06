@@ -1,10 +1,6 @@
 $(function () {
-  let id = ''
-  $('.hypNewNote').click(function () {
-    console.log($(this).attr('data-id'))
+  function getNotes (id) {
     $('.divPreviousNotes').empty()
-    id = $(this).attr('data-id')
-    console.log(id)
     $.ajax({
       type: 'GET',
       url: '/headline/' + id
@@ -28,14 +24,21 @@ $(function () {
           $('.divPreviousNotes').append('There is no note for this headline yet')
         }
       })
+  }
+  let id = ''
+  $('.hypNewNote').click(function () {
+    console.log($(this).attr('data-id'))
+
+    id = $(this).attr('data-id')
+    console.log(id)
+    getNotes(id)
   })
 
   $('.btnSaveNote').click(function () {
     console.log('here')
     console.log('in btnSaveNote, id is ' + id)
     let objNewNote = {
-      body: $('.txNotes').val().trim(),
-      created: Date.now()
+      body: $('.txNotes').val().trim()
     }
     $.ajax({
       type: 'POST',
@@ -45,20 +48,21 @@ $(function () {
     })
       .then(function (data) {
         console.log(data)
-        $('.divPreviousNotes').empty()
+        getNotes(id)
+        $('.txNotes').empty();
       })
   })
-$(document).on('click', '.btnDeleteNote', function(){
-
+  $(document).on('click', '.btnDeleteNote', function () {
     console.log('delete note button clicked')
     console.log($(this).attr('data-id'))
     $.ajax({
       type: 'DELETE',
-      dataType: 'json',
       url: '/note/' + $(this).attr('data-id')
     })
       .then(function (data) {
-        console.log("done");
+        console.log("note deleleted")
+        console.log(data);
+        getNotes(id)
       })
   })
 })

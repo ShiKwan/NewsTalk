@@ -17,6 +17,22 @@ body {
     text-decoration: none;
 }
 
-.fa-heart{
+.fa-heart {
     color: red;
+}
+
+.jumbotron {
+    background-size:cover;
+    background-position: center;
+}
+.jumbotron-home {
+    background-image: url("../images/home2.jpg")
+}
+
+.jumbotron-note {
+    background-image: url("../images/note.jpg")
+}
+
+.jumbotron .display-4, .jumbotron p.lead{
+    color: azure;
 }

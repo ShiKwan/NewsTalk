@@ -42,13 +42,15 @@ module.exports = function (app) {
 
   app.delete('/note/:id', function (req, res) {
     let id = req.params.id
-    db.Note.remove({_id: id}, function (err) {
+    db.Note.findOneAndRemove({_id: id}, function (err, data) {
       if (err) {
+          console.log("error in delete!");
         console.log(err)
         res.send(err);
       }else{
           console.log("note with " + id + " deleted successfully.");
-          res.sendStatus(200);
+          res.json(data);
+          //res.send("success");
       }
     })
   })

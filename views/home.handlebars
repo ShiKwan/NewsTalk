@@ -2,7 +2,7 @@
     <div class="alert alert-success text-center" role="alert">
         This is a success alert—check it out!
     </div>
-    <div class="jumbotron jumbotron-fluid">
+    <div class="jumbotron  jumbotron-home">
         <div class="container">
             <h1 class="display-4">News Talk</h1>
             <p class="lead">A platform to discuss today's tech!</p>
@@ -33,7 +33,7 @@
                                     <input id='headline-link' type='hidden' name='link' value='{{this.link}}' />
                                     <input id='headline-date' type='hidden' name='date' value='{{this.date}}' />
                                     <input id='headline-teaser' type='hidden' name='teaser' value='{{this.teaser}}' />
-                                    <a href="#" class="btn btn-secondary btn-lg active text-right" role="button" aria-pressed="true" onclick="document.getElementById('save{{this.title}}').submit();"><i class='fas fa-heart '></i> like this </a>
+                                    <a href="#" class="btn btn-secondary btn-lg active text-right" role="button" aria-pressed="true" onclick="document.getElementById('save{{this.link}}').submit();"><i class='fas fa-heart '></i> like this </a>
                                 </form>
                             </div>
                         </div>
