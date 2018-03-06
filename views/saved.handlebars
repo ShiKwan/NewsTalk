@@ -1,0 +1,68 @@
+<div class="container-fluid">
+    <div class="alert alert-success text-center" role="alert">
+        This is a success alert—check it out!
+    </div>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Saved Articles</h1>
+            <p class="lead">A platform to discuss today's tech!</p>
+            <div class="lead text-right">
+                <form id="scrape" action="/scrape" method="post">
+                    <a class="btn btn-primary btn-lg btn-danger" href="#" role="button" onclick="document.getElementById('scrape').submit();">Scrape new articles!</a>
+                    <a class="btn btn-primary btn-lg btn-success" href="/headline" role="button">View Saved Headlines</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="article-container">
+        <div class="list-group">
+            {{#each dbHeadline}}
+            <button type="button" class="list-group-item list-group-item-action">
+                <div class='panel panel-default panel-article'>
+                    <div class='panel-heading'>
+                        <a name='link' href='{{this.link}}'>
+                            <h2 name='title'>{{this.title}}</h2>
+                        </a>
+                    </div>
+                    <div class="panel-body">
+                        <p name='date' class='text-right'>Date : {{getDate this.date}}</p>
+                        <p name='teaser'>{{this.teaser}}</p>
+                        </div>
+                    <div class='panel-footer text-right'>
+                        <a href='#' class="btn btn-primary hypNewNote" data-id="{{this.id}}" data-toggle="modal"  data-target=".bd-example-modal-lg">
+                            <i class='fas fa-comment-alt '></i> comment
+                        </a>
+                    </div>
+                </div>
+            </button>
+            {{/each}}
+        </div>
+    </div>
+
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="divPreviousNotes"></div>
+                    <div class="divNewNote">
+                        <textarea class='txNotes'>
+
+                        </textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary btnSaveNote">Save Note</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>

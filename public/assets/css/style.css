@@ -1,0 +1,22 @@
+body {
+    background-color: white;
+    margin: auto;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.panel-heading a:hover,
+.panel-heading a:active,
+.panel-heading a:focus {
+    text-decoration: none;
+}
+
+.panel-heading a {
+    text-decoration: none;
+}
+
+.fa-heart{
+    color: red;
+}
