@@ -47,7 +47,7 @@ module.exports = function (app) {
     }
     console.log(objHeadline)
     var entry = new db.Headline(objHeadline)
-    entry.findOneAndUpdate(function(err, saved){
+    entry.save(function(err, saved){
       if (err) {
         console.log("found duplicates?");
         console.log(err)
