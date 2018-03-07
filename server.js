@@ -5,7 +5,7 @@ let mongoose = require('mongoose')
 let path = require('path')
 let moment = require('moment')
 
-let PORT = 3000
+let PORT = process.env.PORT || 3000
 
 let db = require('./models')
 
