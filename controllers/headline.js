@@ -46,10 +46,9 @@ module.exports = function (app) {
       teaser: req.body.teaser
     }
     console.log(objHeadline)
-    var entry = new db.Headline(objHeadline)
-
-    entry.save(function (err, saved) {
+    db.Headline.findOneAndUpdate(objHeadline, {upsert:true, new: true, setDefaultsOnInsert: true}, function(err, saved){
       if (err) {
+        console.log("found duplicates?");
         console.log(err)
       }else {
         console.log(saved)
