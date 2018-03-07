@@ -11,15 +11,21 @@
     "type": "git",
     "url": "git+https://github.com/ShiKwan/NewsTalk.git"
   },
-  "author": "",
+  "author": "Shi Kwan Tan",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ShiKwan/NewsTalk/issues"
   },
   "homepage": "https://github.com/ShiKwan/NewsTalk#readme",
   "dependencies": {
+    "axios": "^0.18.0",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.2",
     "express-handlebars": "^3.0.0",
-    "moment": "^2.21.0"
+    "moment": "^2.21.0",
+    "mongoose": "^5.0.9",
+    "path": "^0.12.7",
+    "request": "^2.83.0"
   },
   "devDependencies": {}
 }
