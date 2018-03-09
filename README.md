@@ -15,4 +15,4 @@ NPM Package utilized:
 10. request. 
 
 
-Check out the [application](https://murmuring-dusk-21457.herokuapp.com)
+The application is being host by Heroku. Check out the [NewsTalk](https://murmuring-dusk-21457.herokuapp.com)!
